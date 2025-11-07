@@ -23,3 +23,7 @@ optional arguments:
   -dt                 Use Delegation Token for Authentication
   -log [LOG_FILE]     Output also to logfile. If logfile not specified, will log to log.txt
 ```
+
+## Example
+<img src="example.png" width="500">
+
