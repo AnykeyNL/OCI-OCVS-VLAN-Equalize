@@ -79,7 +79,7 @@ print ("\nSDDC Cluster:")
 print ("===============")
 
 for idx, cluster in enumerate(clusters):
-    print("{}: {} - {} ".format(idx, cluster[0], cluster[1]))
+    print("{}: {} - {} ".format(idx, cluster[0], cluster[1]), cluster[2])
 
 selected_id = None
 while selected_id is None:
@@ -166,24 +166,6 @@ if len(vlans_toadd) > 0:
 else:
     print ("All hosts seem to have equal VLAN attachments!")
 
-if cluster[3]:
-    print ("\nChecking on attached block volumes...")
-    unique_blockvolumes = set()
-
-    for host in hosts:
-        if host.lifecycle_state == "ACTIVE":
-            block_attachments = compute.list_volume_attachments(compartment_id=host.compartment_id, instance_id=host.compute_instance_id).data
-            for attachment in block_attachments:
-                if attachment.lifecycle_state == "ATTACHED":
-                    block_volume = block_storage.get_volume(volume_id=attachment.volume_id).data
-                    unique_blockvolumes.add((host.compartment_id, host.compute_instance_id, host.display_name, attachment.volume_id, block_volume.display_name))
-
-    unique_blockvolumes_array = list(unique_blockvolumes)
-    print (unique_blockvolumes_array)
-
-    
-else:
-    print ("\nSkipping block volume checking as Cluster is Multi-AD Cluster.")
 
 
 
