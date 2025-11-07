@@ -79,7 +79,7 @@ print ("\nSDDC Cluster:")
 print ("===============")
 
 for idx, cluster in enumerate(clusters):
-    print("{}: {} - {} ".format(idx, cluster[0], cluster[1]), cluster[2])
+    print("{}: {} - {} ".format(idx, cluster[0], cluster[1]), cluster[3])
 
 selected_id = None
 while selected_id is None:
