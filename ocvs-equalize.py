@@ -69,8 +69,9 @@ clusters = []
 try:
     for cluster in result:
         sddcinfo = sddc.get_sddc(cluster.identity_context['sddcId']).data
-        pair = (sddcinfo.display_name, cluster.display_name, cluster.identifier, cluster.availability_domain if cluster.availability_domain is not None else "Multi-AD")
-        clusters.append(pair)
+        if (sddcinfo.lifecycle_state == "ACTIVE"):
+            pair = (sddcinfo.display_name, cluster.display_name, cluster.identifier, cluster.availability_domain)
+            clusters.append(pair)
 except oci.exceptions.ServiceError as response:
     print ("Error: {} - {}".format(response.code, response.message))
     exit()
@@ -79,7 +80,7 @@ print ("\nSDDC Cluster:")
 print ("===============")
 
 for idx, cluster in enumerate(clusters):
-    print("{}: {} - {} ".format(idx, cluster[0], cluster[1]), cluster[3])
+    print("{}: {} - {} ".format(idx, cluster[0], cluster[1]))
 
 selected_id = None
 while selected_id is None:
