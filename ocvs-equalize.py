@@ -69,8 +69,7 @@ clusters = []
 try:
     for cluster in result:
         sddcinfo = sddc.get_sddc(cluster.identity_context['sddcId']).data
-        print (cluster.availability_domain)
-        pair = (sddcinfo.display_name, cluster.display_name, cluster.identifier, cluster.availability_domain)
+        pair = (sddcinfo.display_name, cluster.display_name, cluster.identifier, cluster.availability_domain if cluster.availability_domain is not None else "Multi-AD")
         clusters.append(pair)
 except oci.exceptions.ServiceError as response:
     print ("Error: {} - {}".format(response.code, response.message))
