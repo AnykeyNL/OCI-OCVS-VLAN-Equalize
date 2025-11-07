@@ -11,7 +11,7 @@ oci.circuit_breaker.NoCircuitBreakerStrategy()
 #           Application Configuration           #
 #################################################
 min_version_required = "2.88.0"
-application_version = "25.06.27"
+application_version = "25.11.07"
 
 ##########################################################################
 # Main Program
