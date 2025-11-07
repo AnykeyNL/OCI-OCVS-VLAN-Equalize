@@ -17,8 +17,8 @@ application_version = "25.11.07"
 # Main Program
 ##########################################################################
 
-print ("OCI - OCVS Equilizer")
-print ("This utiliy help you match the configuration of all ESXi hosts in a SDDC Cluster")
+print ("OCI - OCVS Equalizer")
+print ("This utility help you match the configuration of all ESXi hosts in a SDDC Cluster")
 print ("=====================================================================================")
 print ("")
 
